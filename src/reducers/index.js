@@ -14,9 +14,22 @@ const taskReducer = (state= [], action) => {
     }
     return state;
 },
+postsReducer = (state = [], action) => {
+    switch(action.type){
+        case "POSTS":
+            console.log("actions", state)
+            return Object.assign({}, state, {
+                posts: action.payload
+              });
+        default:
+            return state;
+    }
+    // return state;
+}
 
-reducers = combineReducers({
-    tasks: taskReducer
+var reducers = combineReducers({
+    tasks: taskReducer,
+    posts: postsReducer
 });
 
 export default reducers;
